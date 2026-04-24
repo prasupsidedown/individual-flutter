@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'login_page.dart';
+import 'home.dart'; // sesuaikan nama import home kamu
 
 void main() {
   runApp(const ProfileApp());
@@ -13,14 +14,17 @@ class ProfileApp extends StatelessWidget {
     return MaterialApp(
       title: 'Muhammad Faris',
       debugShowCheckedModeBanner: false,
-      home: Builder(
-        builder: (ctx) => HomeScreen(
-          onGoToProfile: () => Navigator.push(
-            ctx,
-            MaterialPageRoute(builder: (_) => const MainShell()),
+      routes: {
+        '/home': (context) => Builder(
+          builder: (ctx) => HomeScreen(
+            onGoToProfile: () => Navigator.push(
+              ctx,
+              MaterialPageRoute(builder: (_) => const MainShell()),
+            ),
           ),
         ),
-      ),
+      },
+      home: const LoginPage(),
     );
   }
 }
@@ -122,10 +126,10 @@ class AboutPage extends StatelessWidget {
 
   static const String name = 'Muhammad Faris Musyaffa';
   static const String nrp = '3124521021';
-  static const String prodi = 'D4 Teknik Informatika';
+  static const String prodi = 'D3 Teknik Informatika';
   static const String kampus = 'Politeknik Elektronika Negeri Surabaya';
   static const String bio =
-      'Mahasiswa D4 Teknik Informatika PENS yang tertarik di bidang '
+      'Mahasiswa D3 Teknik Informatika PENS yang tertarik di bidang '
       'pengembangan aplikasi web & mobile, jaringan komputer, dan '
       'kecerdasan buatan.';
 
@@ -335,9 +339,13 @@ class ContactPage extends StatelessWidget {
   const ContactPage({super.key});
 
   static const List<ContactData> items = [
-    ContactData(Icons.email_outlined, 'Email', 'faris@student.pens.ac.id'),
+    ContactData(Icons.email_outlined, 'Email', 'farismusyaffa302@gmail.com'),
     ContactData(Icons.location_on_outlined, 'Lokasi', 'Surabaya, Indonesia'),
-    ContactData(Icons.language_outlined, 'Website', 'pens.ac.id'),
+    ContactData(
+      Icons.language_outlined,
+      'Website',
+      'belalangkecap@it.student.pens.ac.id',
+    ),
     ContactData(
       Icons.school_outlined,
       'Kampus',

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Tidak import main.dart — navigasi dikontrol lewat callback dari luar
 class HomeScreen extends StatelessWidget {
   final VoidCallback onGoToProfile;
   const HomeScreen({super.key, required this.onGoToProfile});
@@ -27,25 +26,42 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(fontSize: 15, color: Color(0xFF666666)),
             ),
             const SizedBox(height: 32),
-            ElevatedButton.icon(
-              onPressed: onGoToProfile,
-              icon: const Icon(Icons.person_outline, size: 18),
-              label: const Text('Lihat Profile Saya'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF1565C0),
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 28,
-                  vertical: 14,
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: onGoToProfile,
+                  icon: const Icon(Icons.person_outline, size: 18),
+                  label: const Text('Lihat Profile Saya'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF1565C0),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 28,
+                      vertical: 14,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                const SizedBox(width: 12),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/');
+                  },
+                  tooltip: 'Logout',
+                  style: IconButton.styleFrom(
+                    backgroundColor: const Color(0xFFFFEEEE),
+                    foregroundColor: const Color(0xFFCC0000),
+                  ),
+                  icon: const Icon(Icons.logout),
                 ),
-                textStyle: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              ],
             ),
           ],
         ),
