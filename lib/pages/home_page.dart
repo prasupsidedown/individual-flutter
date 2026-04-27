@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'utils/session_manager.dart'; // ← fix path
+import '../utils/session_manager.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
